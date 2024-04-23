@@ -1,0 +1,6 @@
+Flask==3.0.2
+jsonify
+gunicorn==21.2.0
+tensorflow
+numpy
+redis=5.0.1
