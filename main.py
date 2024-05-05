@@ -30,10 +30,16 @@ def simpleGET():
 Algorithm to find the first "Perfect Numbers".
 Note: This is a non-optimized approach for demonstration purposes.
 
-A number is called a Perfect Number (Vollkommende Zahl) if it is 
-equal to the sum of all its integer divisors (including 1 and 
-excluding itself). The first two perfect numbers are
+A number is called a Perfect Number ("Vollkommende Zahl") if its 
+value is equal to the sum of all its integer divisors (excluding itself). 
+The first two perfect numbers are
 6 = 3 + 2 + 1 and 28 = 14 + 7 + 4 + 2 + 1
+
+Further note:
+Euclid proved that 2^(k-1)*(2^k-1) is a perfect number, whenever 
+(2^k-1) is a prime number. This means that the search for perfect 
+numbers can be reduced to the search for prime numbers 
+and a more efficient algorithm can be developed.
 '''
 @app.route("/perfectNr", methods=['GET'])
 def perfectNr():
@@ -119,12 +125,12 @@ Demonstating a statefull component using local memory
 of the instance serving the application
 '''
 card = []
-@app.route("/get_cart_locMem", methods=['GET'])
-def getCart_locMem():
+@app.route("/get_cart_SF", methods=['GET'])
+def getCart_SF():
     return jsonify(cart) # return list into a JSON response
 
-@app.route("/add_to_cart_locMem", methods=['POST'])
-def addToCart_locMem():
+@app.route("/add_to_cart_SF", methods=['POST'])
+def addToCart_SF():
     cartItem = request.json.get("item") # Assumption: sending JSON data with 'item' key
 
     if cartItem:
@@ -156,14 +162,14 @@ redis_db = redis.Redis(host=redis_host, port=redis_port, db=0)
 # https://cloud.google.com/memorystore/docs/redis/connect-redis-instance-cloud-run#python
 #redis_db = redis.StrictRedis(host=redis_host, port=redis_port)
 
-@app.route("/get_cart_redis", methods=['GET'])
-def getCart_redis():
+@app.route("/get_cart_SL", methods=['GET'])
+def getCart_SL():
     cart = redis_db.lrange('cart', 0, -1) # get all items from the list
     cart = [item.decode('utf-8') for item in cart] # convert bytes to string
     return jsonify(cart) # return list into a JSON response
 
-@app.route("/add_to_cart_redis", methods=['POST'])
-def addToCart_redis():
+@app.route("/add_to_cart_SL", methods=['POST'])
+def addToCart_SL():
     cartItem = request.json.get("item") # Assumption: sending JSON data with 'item' key
 
     if cartItem:

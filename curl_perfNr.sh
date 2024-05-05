@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVICE_NAME="sample-webservice"
-REGION="europe-west9"
+REGION="europe-west3"
 
 SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --platform managed --region $REGION --format "value(status.url)")
 
