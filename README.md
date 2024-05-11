@@ -55,9 +55,9 @@ gcloud services enable \
 
 ## b. Write application
 - Create working directory `sample-webservice` 
-- Create main file `main.py` or use the one from this GitHub repo
-- Create `requirements.txt`for python libraries
-- Create `Procfile`neccessary for Cloud Run to specify how the application will be served:
+- Create main file `main.py` (see GitHub repository)
+- Create `requirements.txt` for python libraries
+- Create `Procfile` neccessary for Cloud Run to specify how the application will be served:
 `web: gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app`
 
 ## c. Deployment
@@ -115,7 +115,7 @@ Note that if using more demanding functions such as the deep learning example (c
 ```
 gcloud run services update $SERVICE_NAME \
 --region $REGION \
---max-instances 10
+--max-instances 10 \
 --memory 2048Mi
 ```
 

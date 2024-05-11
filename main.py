@@ -30,7 +30,7 @@ def simpleGET():
 Algorithm to find the first "Perfect Numbers".
 Note: This is a non-optimized approach for demonstration purposes.
 
-A number is called a Perfect Number ("Vollkommende Zahl") if its 
+A number is called a Perfect Number ("Vollkommene Zahl") if its 
 value is equal to the sum of all its integer divisors (excluding itself). 
 The first two perfect numbers are
 6 = 3 + 2 + 1 and 28 = 14 + 7 + 4 + 2 + 1
@@ -192,11 +192,14 @@ def addToCart_SL():
         ), 400
     
 if __name__ == "__main__":
+    #
     # Testing:
     # run "pip install -r requirements.txt"
     # run "python main.py" 
     # open "http://localhost:8080"
+    #
     # Deployment:
     # When deploying to Cloud Run, a production-grade WSGI HTTP server,
     # such as Gunicorn, will serve the app.
+    #
     app.run(host="localhost", port=8080, debug=True)
