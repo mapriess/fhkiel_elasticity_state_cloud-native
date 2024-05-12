@@ -124,7 +124,7 @@ def fashionMNIST_MLP():
 Demonstating a statefull component using local memory 
 of the instance serving the application
 '''
-card = []
+cart = []
 @app.route("/get_cart_SF", methods=['GET'])
 def getCart_SF():
     return jsonify(cart) # return list into a JSON response
@@ -134,7 +134,7 @@ def addToCart_SF():
     cartItem = request.json.get("item") # Assumption: sending JSON data with 'item' key
 
     if cartItem:
-        card.append(cartItem)
+        cart.append(cartItem)
         return jsonify(
             {
                 'status': 'success',
