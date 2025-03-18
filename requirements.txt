@@ -3,4 +3,4 @@ jsonify
 gunicorn==21.2.0
 tensorflow
 numpy
-redis=5.0.1
+redis==.0.1
